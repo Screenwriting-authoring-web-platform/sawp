@@ -1,0 +1,58 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>SAWP Documentation - Install</title>
+    <style type="text/css">
+        ol > li {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<h1>Install</h1>
+
+<ol>
+    <li>
+        upload everything that is inside the folder /web inside your folder on the webspace where you want the project to be located (most time the root folder /), so when you call http://example.com/index.php the application shows up.
+    </li>
+    <li>
+        make sure that *.php files are executed with php (on most webhosters that is already configured) we tested the application with PHP 5.5.9 (built: Sep  4 2014 06:56:34) on Ubuntu 14.04.1 LTS
+    </li>
+    <li>
+        for better sart url (without entering index.php) make sure index.php is your default file to open (on most webhosters that is already configured)
+    </li>
+    <li>
+        on your webhoster create a new MySQL database(if you can with innodb) (or share a database with another tool, but thats not recommended) and write down hostname (server address), username, password, and databasename. We used MySQL 5.5.38 on Ubuntu 14.04.1 LTS
+    </li>
+    <li>
+        open http://example.com in a browser (we tested Firefox 32.0 on Ubuntu 14.04.1 LTS) and press start
+    </li>
+    <li>
+        you can see what php modules are needed for the tool and what files and folders have to be writeable. If a php module is not active(red) install it. If a permission is not writable(red) make sure the php user can write it. If everything is green you can press Next Step.
+    </li>
+    <li>
+        Now you can configure your Mailsettings. If you do not check <b>use smtp</b> then your php sendmail will be used. If sendmail is not working on your server, 
+        select <b>use smtp</b> and insert your smtp credentials. They can be from another server or even a freemail provider.<br />
+        Mailsettings are important, because activation links and contact form data are send by mail.        
+    </li>
+    <li>
+        enter your MySQL database Serveraddress, Username, Password and Database and press Save.
+    </li>
+    <li>
+        click Next Step
+    </li>
+    <li>
+        you can now create your first useraccount. this account has admin/god/root rights. Enter a valid emailaddress. After register you have to check your mail inpox and click the link on a mail with the subject <b>Verify your Account</b>
+    </li>
+    <li>
+        Click on <b>Administration</b> on the top menu bar and click on <b>settings</b>. Now you can change the settings and press <b>Set</b>
+    </li>
+    <li>
+        You have successfully installed <b>Screenwriting authoring web platform</b>. Have fun!
+    </li>
+</ol>
+
+</body>

@@ -1,0 +1,48 @@
+p {
+    font-family: 'Courier New',Arial;
+    font-size: 10pt;
+    margin: 10pt 35px;
+    padding: 0 2px;
+    page-break-inside: avoid;
+}
+.scene {
+    background-color: #ccc;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    text-transform: uppercase;
+    page-break-before: always;
+}
+.action {
+}
+.character {
+    margin-left: 40%;
+    text-align: center;
+    text-transform: uppercase;
+    width: 20%;
+}
+.dialogue {
+    margin-left: 25%;
+    width: 50%;
+}
+.parenthetical {
+    margin-bottom: -7pt;
+    margin-left: 30%;
+    margin-top: -7pt;
+    width: 50%;
+}
+.parenthetical:before {
+    content: "(";
+}
+.parenthetical:after {
+    content: ")";
+}
+.transition {
+    text-align: right;
+    text-transform: uppercase;
+}
+.shot {
+    text-transform: uppercase;
+}
+.text {
+    text-align: left;
+}

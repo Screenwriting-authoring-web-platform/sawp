@@ -1,0 +1,2 @@
+INSERT INTO `team` (`id`, `name`, `description`, `creationtime`, `public`) VALUES (1, 'testteam01', 'testdescription01', '2014-09-04 14:54:34', 0), (2, 'testteam02', '', '2014-09-04 14:54:35', 0), (3, 'testteam03', '', '2014-09-04 14:54:36', 1), (4, '&amp;amp;<>*?&%$§!°^@"''`#{}()[];:&ouml;öäüßǆ Ǉ ǈ ǉ ǊϮ࿊※⌨僀&amp;', '&amp;amp;<>*?&%$§!°^@"''`#{}()[];:&ouml;öäüßǆ Ǉ ǈ ǉ ǊϮ࿊※⌨僀&amp;', '2014-09-04 14:54:38', 1);
+INSERT INTO `team_user` (`teamid`, `userid`, `rights`) VALUES (1, 1, 0),(1, 2, 0),(2, 1, 1),(2, 2, 0),(3, 1, 2),(3, 2, 0), (4, 2, 0), (4, 6, 1);

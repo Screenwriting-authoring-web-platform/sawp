@@ -1,0 +1,46 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>SAWP Documentation - Todo</title>
+</head>
+<body>
+
+
+
+<h1>Todo, open tickets, ideas</h1>
+
+<ul>
+<li>more layout, styling</li>
+<li>test without innodb</li>
+<li>more colors in tagtree, use html5 color input</li>
+<li>import screenplay in modal</li>
+<li>breakdownmenu settings in modal</li>
+<li>more spellchecking, director can change language</li>
+<li>export (odt,docx,rtf) better (bug located in phpword)</li>
+<li>set metainformation for scripts (category like drama, thriller, war; tags like titanic, vietnam, paris)</li>
+<li>search/filter scripts, use name, description, category and tags</li>
+<li>chat with online team members</li>
+<li>realtime collaborative screenplay editing (see etherpad, etherpad lite)</li>
+<li>As a new user i want to have an introduction to organsiation of members, roles(global, inside team), teams, and screenplays. This introduction should be clearly visible on the front page.</li>
+<li>when tagging and insert #foobar and the category foobar does not exists it should be created (at root or under selected category or sibling of selected tag)</li>
+<li>Tagtree: truncate long names (they are long in database, but in the tree only the first x chars are displayed. if truncated show ...)</li>
+<li>Tagtree: new tag or category should inherit color from parent category. Maybe it should be a little bit different</li>
+<li>Bug in Tagtree and Screenplaytext: insert html code for a &amp; (&amp;amp;) and it becomes the character &amp;<br />
+we often used this string for testing: &amp;amp;&lt>&ft;*?&amp;%$§!°^@"'`#{}()[];:ööüßǆ Ǉ ǈ ǉ ǊϮ࿊※⌨僀&amp;
+</li>
+<li>more hotkeys in tagtree and editor. List hotkeys in ? modal</li>
+<li>When deleting tag in tree, delete span elements for this tag in screenplay</li>
+<li>Bug in editor: when tagging a word before a linebreak, the word after the linebreak is also tagged</li>
+<li>Edit team or change site settings: replace textimput for defaulttree with a real tree. Every category should contain a key!</li>
+<li>Button and hotkey for removing a tag in text, the tag in tagtree remains, but the selected word is not tagged anymore.</li>
+<li>Bug: when on an already tagged word alt-t is pressed and the tagging is canceled with esc, the old tag is gone</li>
+<li>Export html and pdf: Create title page with screenplay name, author(team) name, date, ...</li>
+<li>Do not use inconvenient and error-prone XMLElement, getSimpleXMLElementFromHtml, getTextFromXML. Instead use DOMDocument like in insertPagebreakavoiddivInHtml</li>
+<li>Button and Hotkey in editor for detagging of selected word (or word with cursor in it). Current workaround: select tag with cursor, alt-t, esc</li>
+<li>installer check mailsettings</li>
+<li>installer set contact mail</li>
+<li>in database: do not use predefined row in auth_assignment for first user. Instead check on new user if it is the first one and
+then set admin rights. After fixing this, we can use foreign key for auth_assignment->userid</li>
+</ul>
+
+</body>

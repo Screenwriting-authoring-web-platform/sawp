@@ -1,0 +1,110 @@
+.select2-disabled{
+    color:#AAA;
+}
+
+ul.select2-results {
+ max-height: 1000px;
+}
+
+#selectBlockType{
+    width:150px;
+}
+
+.page-container{
+    position: absolute;
+    top:50px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+}
+
+ul.fancytree-container{
+    border:none !important;
+}
+.left-container{
+    position:absolute;
+    left:0px;
+    top:0px;
+    bottom:0px;
+    border-right: 1px solid #DDD;
+}
+.right-container{
+    position:absolute;
+    left:250px;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    min-width: 700px;
+    
+}
+
+.left-container .container-toolbar{
+        z-index:101 !important; //fixes the layout dropdown is over the other toolbar
+}
+.container-toolbar{
+    position: absolute;
+    top:0px;
+    left:0px;
+    height: 50px;
+    width:100%;
+    padding: 10px 10px;
+    box-shadow: 0 3px 2px -2px gray;
+    z-index:100;
+}
+
+.editor-toolbar{
+    width:660px;
+}
+
+.container-main{
+    position:absolute;
+    top:50px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    overflow:auto;
+}
+.editor-and-comments-container{
+    margin-top:20px !important;
+    margin-bottom:20px !important;
+}
+.editor-container{
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+     box-shadow: 0 0 5px #888;
+    min-height:774px;
+    float:left;
+}
+
+.centered{
+    margin:0px auto;
+}
+
+
+.comments-container{
+    float:right;
+    position:relative;
+}
+
+.tagtree{
+    margin-left:5px;
+}
+
+.clear {
+    clear: both;
+}
+
+
+.scene-list-title{
+    text-transform: uppercase;
+}
+
+#btnToogleNavbar{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+#btnSave{
+    width: 35px;
+}

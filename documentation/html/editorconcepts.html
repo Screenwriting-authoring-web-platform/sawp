@@ -1,0 +1,77 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>SAWP Documentation - Editorconcepts</title>
+</head>
+<body>
+
+<h1>Editorconcepts</h1>
+
+<h2>Frontend</h2>
+
+<h4>Block</h4>
+A Block is a &lt;p&gt; element with its content and children. The class specifies what type it is:
+<ul>
+    <li>Scene</li>
+    <li>Action</li>
+    <li>Character</li>
+    <li>Dialogue</li>
+    <li>Parenthetical</li>
+    <li>Transition</li>
+    <li>Shot</li>
+    <li>Note</li>
+</ul>
+With <b>return</b> you create a new block, with <b>shift+return</b> you create a linebreak.
+
+<h4>Do not use bootstrap toogle buttons with <b>data-toggle</b> attribute</h4>
+
+<p>Reason: To check if the button ist pressed you use the $(button).hasClass('active'). But when you click the button the 'active' class
+might be updated after the click-listener [ $(button).click(..) ] was triggered. So requesting the button state in the click-listener
+will sometimes give the wrong result and sometimes the right one depending on how the event listeners are executed (race condition).
+Solution: We simply do not use the boostrap "data-toggle" but instead toggle the class on our own in the click-listener. See the following code:</p>
+
+<div style="border: 1px dotted black; font-family: monospace;">
+<pre>
+$(button).click(function(){
+    $(button).toggleClass('active');
+    if($(button).hasClass('active')){
+        //do something when button gets pressed;
+    }else{
+         //do something when button gets released;
+    }
+})
+</pre>
+</div>
+
+<h4>We do not use Websockets</h4>
+
+<p>Reason: Web sockets require some server side installations that would complicate the installation of the whole plattform
+(see for example http://socketo.me/docs/deploy). Those are installation of external programs or modifying php config,
+which is not allowed for most web hosting packages and would require the user to switch to a root server.
+Easy-install is one of the most important features an so we won´t use websockets but ajax and long polling instead.</p>
+
+
+<h4>Bootstrap Popover and Select2</h4>
+
+<p>When you use a select2 in a bootstrap popover you must set a css width and height attribute
+otherwise the popover gets a wrong position because the select2 changes its size. <a href="http://stackoverflow.com/questions/19600087/bootstrap-popover-wrong-placement-when-using-select2">see also</a><br />
+Example:</p>
+<div style="border: 1px dotted black; font-family: monospace;">
+<pre>
+.popover{width: 249px; height: 304px;}
+</pre>
+</div>
+
+
+<h4>The Editor HTML/CSS Layout</h4>
+
+<p>The editor layout is build from html and css and uses only very little javascript for dynamically
+setting sizes. Actually javascript is only used for fading the left sidebar in and out.
+The page relys heavily on the css {position: absolute;}.<br />
+
+The elements that are centered use the css from 
+<a href="http://stackoverflow.com/questions/283961/centering-a-div-block-without-the-width">link</a>
+to be centered without having to declare a width attribute (flexible width!)</p>
+
+
+</body>

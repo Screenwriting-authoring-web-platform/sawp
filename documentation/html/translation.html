@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>SAWP Documentation - Translation</title>
+</head>
+<body>
+
+<h1>Translation</h1>
+
+Translationfiles are located in <b>/web/includes/messages/LANGUAGE/</b>. 
+
+<h3>add language</h3>
+To add a new language, add the language code in <b>/web/includes/messages/config.php</b> line 10 (languages) and run the Linux sh 
+script <b>generate_messages.sh</b>. A new folder with two languagefiles <b>app.php</b> and <b>js.php</b> will be created.
+
+<h3>translate language</h3>
+open the files <b>app.php</b> and <b>js.php</b> in the folder you want to translate and write the translation behind the match string.
+For example:
+<pre>'Add Team' => '',</pre> becomes <pre>'Add Team' => 'Team hinzufügen',</pre>
+Sometimes there are parameters in {}. For exymple:
+<pre>'Could not write to "{path}"' => '',</pre> becomes <pre>'Could not write to "{path}"' => 'Konnte nicht nach {path} schreiben',</pre>
+
+
+After adding your strings save the file with utf8 charset.
+
+
+<h3>Use in php</h3>
+write <pre>\Yii::t('app', 'Login')</pre> to translate the word <b>Login</b>. All php strings wil be written in the file app.php
+
+<h3>Use in Javascript</h3>
+write <pre>jst("js", 'error')</pre> to translate the word <b>error</b>. All js strings wil be written in the file js.php
+
+
+</body>

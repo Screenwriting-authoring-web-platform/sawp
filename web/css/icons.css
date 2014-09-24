@@ -1,0 +1,80 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?-l989x7');
+	src:url('fonts/icomoon.eot?#iefix-l989x7') format('embedded-opentype'),
+		url('fonts/icomoon.woff?-l989x7') format('woff'),
+		url('fonts/icomoon.ttf?-l989x7') format('truetype'),
+		url('fonts/icomoon.svg?-l989x7#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.icon{
+	font-family: 'icomoon';
+	position: relative;
+	top: 1px;
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+}
+
+.icon-download:before {
+	content: "\e600";
+}
+.icon-disk:before {
+	content: "\e601";
+}
+.icon-undo:before {
+	content: "\e602";
+}
+.icon-redo:before {
+	content: "\e603";
+}
+.icon-undo2:before {
+	content: "\e604";
+}
+.icon-redo2:before {
+	content: "\e605";
+}
+.icon-cloud-download:before {
+	content: "\e606";
+}
+.icon-download2:before {
+	content: "\e607";
+}
+.icon-spell-check:before {
+	content: "\e60e";
+}
+.icon-arrow-down:before {
+	content: "\e608";
+}
+.icon-filter:before {
+	content: "\e609";
+}
+.icon-bold:before {
+	content: "\e60a";
+}
+.icon-underline:before {
+	content: "\e60b";
+}
+.icon-italic:before {
+	content: "\e60c";
+}
+.icon-file-pdf:before {
+	content: "\e60d";
+}

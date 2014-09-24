@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/web/index.php" />
+<title>neg_01_name</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">neg_01_name</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/index.php?r=team/index</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Create new team</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.modal-body</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=addteamform-description</td>
+	<td>testdescription01</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=addteam-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//form[@id='addteam-form']/div[2]/div[2]/div[2]/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='addteam-form']/div[2]/div[2]/div[2]/div</td>
+	<td>Name cannot be blank.</td>
+</tr>
+</tbody></table>
+</body>
+</html>

@@ -1,0 +1,17 @@
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #breakdowncontent, #breakdowncontent * {
+    visibility: visible;
+  }
+  #breakdowncontent {
+	width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  button {
+	display: none;  
+  }
+}

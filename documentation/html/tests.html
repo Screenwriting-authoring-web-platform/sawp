@@ -1,0 +1,48 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>SAWP Documentation - Tests</title>
+</head>
+<body>
+
+
+
+<h1>Tests</h1>
+
+<ol>
+    <li style="margin-bottom: 5px;">move <b>/tests/TestingController.php</b> to <b>/web/includes/controllers/TestingController.php</b><br />
+    <span style="color:red;text-transform: uppercase; font-weight: bold;">do not leave this file in controllers folder in productive environment, it causes security issues!</span></li>
+    
+    <li style="margin-bottom: 5px;">The testfolder has to be placed as a sibling of your webroot folder. (like in git repository or downloaded archive).
+    If you cannot fulfil this then make sure the pathes to sql dumps in TestingController.php match your filesystem.<br />
+    \Yii::getAlias('@webroot')."/../tests/02_login/users.sql")<br />
+    \Yii::getAlias('@webroot')."/../tests/04_listteams/teams.sql")
+    </li>
+    
+    <li style="margin-bottom: 5px;">Install Selenium IDE for Firefox. <i>(We used Selenium IDE 2.6.0 and Firefox 32.0 under Ubuntu 14.04.1 LTS)</i></li>
+
+    <li style="margin-bottom: 5px;">Go to your application page and open Selenium IDE</li>
+    
+    
+    
+    
+    <li style="margin-bottom: 5px;">
+    For testing each suite you have to perform the following steps:
+    <ol>
+        <li style="margin-bottom: 5px;">Log off from application</li>
+        <li style="margin-bottom: 5px;">open the suite you want to use (for example /tests/01_register/suite)</li>
+        <li style="margin-bottom: 5px;">Click Actions &rarr; Run entire testsuite</li>
+    
+    </ol>
+    </li>
+
+    <li style="margin-bottom: 5px;">move <b>/web/includes/controllers/TestingController.php</b> to <b>/tests/TestingController.php</b><br />
+    <span style="color:red;text-transform: uppercase; font-weight: bold;">do not leave this file in controllers folder in productive environment, it causes security issues!</span></li>
+
+<br /><br />
+
+
+<h3>Issues</h3>
+01_register &rarr; register_neg_01_mail: We are not sure how to test the html5 email input with selenium. It is possible for testing to change it to a normal textfield.
+
+</body>

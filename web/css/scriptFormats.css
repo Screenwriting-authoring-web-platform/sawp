@@ -1,0 +1,73 @@
+body{ padding:10px }
+
+p{
+  font-size:10pt;
+  font-family:'Courier New', Arial;
+  padding:0px 2px;
+  margin:10pt 35px 0px 35px;
+}
+
+.scene{
+    background-color: #CCC;
+    text-transform: uppercase;
+    padding-top: 3px;
+    padding-bottom:3px;
+}
+
+.action{
+    
+}
+
+.character{
+    text-transform: uppercase;
+    width: 40%;
+    margin-left: 30%;
+    text-align: center;
+}
+
+.dialogue{
+    width: 50%;
+    margin-left: 25%;
+}
+
+.parenthetical{
+    width: 50%;
+    margin-left: 30%;
+}
+
+.dialogue + .parenthetical{
+    margin-top:0px;
+}
+.parenthetical + .parenthetical {
+    margin-top:0px;
+}
+.parenthetical + .dialogue {
+    margin-top:0px;
+}
+
+.parenthetical:before{
+     content: "("
+}
+.parenthetical:after{
+     content: ")"
+}
+
+.transition{ 
+    text-align: right;
+    text-transform: uppercase;
+}
+
+.shot{
+    text-transform: uppercase;
+}
+
+.text{
+    text-align: left;
+}
+
+.note{
+    text-align: left;
+	color: grey;
+	border-left: 10px solid grey;
+	padding-left: 5px;
+}

@@ -1,0 +1,215 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>SAWP Documentation - Filesystem</title>
+</head>
+<body>
+
+<h1>Filesystem</h1>
+only important files and folders are listed.
+<h3>Folders</h3>
+created with <b>tree -dv -L 4</b><br />
+
+<div style="border: 1px dotted black; font-family: monospace;">
+<pre>
+. 
+├── documentation                 &rarr;  Documantation of project
+├── tests                         &rarr;  Seleniumtests for some part of the project
+│   ├── 01_register               &rarr;  Registertests
+│   ├── 02_login                  &rarr;  Logintests
+│   ├── 03_create_project         &rarr;  Create team tests
+│   ├── 04_listteams              &rarr;  List teams tests
+│   ├── 05_listpublic             &rarr;  List public teams test
+│   └── 06_newscript              &rarr;  New Screenplay tests
+└── web                           &rarr;  Everything that is accessible for the visitor. You should upload this folder to your webspace.
+    ├── assets                    &rarr;  Temporary asset files for clients, like bootstrap, styles, javascript, images. It has to be <b>writable</b>. In the git repository this folder should always be <b>empty</b>.
+    ├── css                       &rarr;  Static stylesheets
+    │   └── fonts                 &rarr;  Fonts used in stylesheets and fonts that contain icons.
+    ├── includes                  &rarr;  php code for the project
+    │   ├── assets                &rarr;  Assetbundles. Defines what files get copied to the temporary asset folder.
+    │   ├── config                &rarr;  Config files, db.php, language.php, mail.php and installed.php have to be <b>writable</b>.
+    │   ├── controllers           &rarr;  Controllers: Define what happens on a specific action (action=url call) (see <a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">wikipedia: Model–view–controller</a>)
+    │   ├── messages              &rarr;  Translation files, every subfolder is one language. If there is no folder for the selected language the strings inside the code will be used.
+    │   │   ├── TEST              &rarr;  Testlanguage. Every string gets translated into "TEST". With this language you can easily find strings that are not translated yet.
+    │   │   ├── de-DE             &rarr;  German
+    │   │   ├── en-EN             &rarr;  English
+    │   │   └── pt-PT             &rarr;  Portuguese
+    │   ├── models                &rarr;  Models: Logic for teams, screenplays, users, ... also contains formlogic (see <a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">wikipedia: Model–view–controller</a>)
+    │   ├── rbac                  &rarr;  RBAC rules: Define if a user has a specific role in the team or not. (see <a href="http://en.wikipedia.org/wiki/Role-based_access_control">Role-based access control</a>)
+    │   ├── runtime               &rarr;  Runtime files for yii2. It has to be <b>writable</b>.
+    │   ├── vendor                &rarr;  php libraries
+    │   │   ├── PhpWord           &rarr;  used for export to docx, rtf, odt
+    │   │   ├── bin               &rarr;  shipped with yii2, link to cebe
+    │   │   ├── cebe              &rarr;  shipped with yii2, Markdown library
+    │   │   ├── composer          &rarr;  shipped with yii2
+    │   │   ├── dompdf            &rarr;  used for export to pdf
+    │   │   ├── ezyang            &rarr;  shipped with yii2
+    │   │   ├── fancytree         &rarr;  used for category and tagtree 
+    │   │   ├── jquery-i18n       &rarr;  used for javascript translation 
+    │   │   ├── jquery-scrollto   &rarr;  used for scroll to scene inside screenplay editor 
+    │   │   ├── jquery-ui         &rarr;  used for jQuery graphical userinterface
+    │   │   ├── phpspec           &rarr;  shipped with yii2
+    │   │   ├── select2           &rarr;  used for tagging
+    │   │   ├── simplecolorpicker &rarr;  used to pick color when editing a tag or category 
+    │   │   ├── swiftmailer       &rarr;  shipped with yii2, used for sending mails
+    │   │   ├── twbs              &rarr;  shipped with yii2, twitter bootstrap design
+    │   │   └── yiisoft           &rarr;  shipped with yii2, yii2 core
+    │   └── views                 &rarr;  Views: display the application. Sometimes known as templates. (see <a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">wikipedia: Model–view–controller</a>)
+    │       ├── admin             &rarr;  admin tages
+    │       ├── ajax              &rarr;  ajax (only echo or json_encode)
+    │       ├── install           &rarr;  install pages
+    │       ├── layouts           &rarr;  layouts around other views (containing navigation)
+    │       ├── screenplay        &rarr;  screenplay pages
+    │       ├── site              &rarr;  general site pages (login for example)
+    │       ├── team              &rarr;  team pages
+    │       ├── testing           &rarr;  only used for selenium tests, only echo, no security issues
+    │       └── user              &rarr;  user page and edit profile
+    ├── js                        &rarr;  static javascript code
+    │   └── screenplay            &rarr;  javascript for screenplay editor (fancytree, tinymce, layout, comments, Tagtree)
+    └── media                     &rarr;  images
+</pre>
+</div>
+
+<h3>Files</h3>
+created with <b>tree -v -L 4</b><br />
+
+
+
+<div style="border: 1px dotted black; font-family: monospace;">
+<pre>
+.
+├── yii                                    &rarr;  yii2 console script. Can for example extract messages for translation (can be run under linux)
+├── yii.bat                                &rarr;  start yii2 console script (windows)
+├── documentation
+│   └── index.html                         &rarr;  Documentation index file
+├── tests
+│   ├── TestingController.php              &rarr;  For testing this files has to be moved to /web/includes/controllers <span style="color:red;text-transform: uppercase; font-weight: bold;">do not leave this file in controllers folder in productive environment, it causes security issues!</span>
+│   └── index-test.php                     &rarr;  For debugging this files has to be moved to /web/ <span style="color:red;text-transform: uppercase; font-weight: bold;">do not leave this file in /web folder in productive environment, it causes security issues!</span>
+└── web
+    └── assets
+    ├── css
+    │   ├── history.css                    &rarr;  Design for screenplay/history page
+    │   ├── icons.css                      &rarr;  stylesheet for icons
+    │   ├── screenplay.css                 &rarr;  Design for edit screenplay page
+    │   ├── scriptFormats.css              &rarr;  Design for screenplay blocks (scene, character, dialogue, ...)
+    │   ├── showbreakdownreport.css        &rarr;  Design for displaying breakdownreports
+    │   ├── site.css                       &rarr;  Design for global site
+    │   └── ui.fancytree.css               &rarr;  Design for Fancytree
+    ├── favicon.ico                        &rarr;  favicon of page
+    ├── includes
+    │   ├── assets
+    │   │   ├── AppAsset.php               &rarr;  Asset for site. Contains 'css/site.css'
+    │   │   ├── ColorPickerAsset.php       &rarr;  Asset for colorpicker used in tagtree
+    │   │   ├── FancytreeAsset.php         &rarr;  Asset for Fancytree used in Tagtree
+    │   │   ├── I18NAsset.php              &rarr;  Asset for js i18n wrapper written by us and dictionary
+    │   │   ├── JQueryI18NAsset.php        &rarr;  JQuery i18n asset
+    │   │   ├── JqueryScrollToAsset.php    &rarr;  Asset for JQuery scrollto
+    │   │   ├── JqueryUIAsset.php          &rarr;  Asset for JQuery UI
+    │   │   └── Select2.php                &rarr;  Asset for select2
+    │   ├── config
+    │   │   ├── console.php                &rarr;  for console application, not really needed
+    │   │   ├── db.php                     &rarr;  for database connection. Has to be <b>writable</b>. Will be overwritten during install.
+    │   │   ├── installed.php              &rarr;  boolean value if system is installed. Has to be <b>writable</b>. Will be overwritten during install. When not installed or project is shipped it has to be false.
+    │   │   ├── language.php               &rarr;  string value for language folder. Has to be <b>writable</b>. Will be written in admin settings.
+    │   │   ├── mail.php                   &rarr;  mailsettings. Has to be <b>writable</b>
+    │   │   └── web.php                    &rarr;  normal config file. includes params.php, db.php, language.php
+    │   ├── controllers
+    │   │   ├── AdminController.php        &rarr;  for admin Backend actions(user and team management, global settings)
+    │   │   ├── AjaxController.php         &rarr;  for ajax communication with javascript client (get/set screenplaycontent, get/save/delete comments, get/save tree, keeplock)
+    │   │   ├── InstallController.php      &rarr;  installactions, used only during install
+    │   │   ├── ScreenplayController.php   &rarr;  for screenplay actions
+    │   │   ├── SiteController.php         &rarr;  for global actions (register, login, logout, activate, contact)
+    │   │   ├── TeamController.php         &rarr;  for team actions
+    │   │   ├── TestingController.php      &rarr;  only used for testing, not shipped in this location <span style="color:red;text-transform: uppercase; font-weight: bold;">do not leave this file here in productive environment, it causes security issues!</span>
+    │   │   └── UserController.php         &rarr;  for user action (view, edit profile) 
+    │   ├── messages
+    │   │   ├── config.php                 &rarr;  config file for extracting displayed strings from code (js,php) to subfolders
+    │   │   ├── en-EN
+    │   │   │   ├── app.php                &rarr;  english translationfile for php code
+    │   │   │   └── js.php                 &rarr;  english translationfile for js code
+    │   │   ├── generate_messages.sh       &rarr;  Linux sh script. Uses /yii file in rootfolder to extract displayed strings from code (js,php) to subfolders.
+    │   ├── models
+    │   │   ├── AddscreenplayForm.php      &rarr;  Form logic for screenplay -> add
+    │   │   ├── AddteamForm.php            &rarr;  Form logic for team -> add
+    │   │   ├── AdminaddteamForm.php       &rarr;  Form logic for admin -> adding a team
+    │   │   ├── AdminAdduserForm.php       &rarr;  Form logic for admin -> adding a user
+    │   │   ├── AdmineditteamForm.php      &rarr;  Form logic for admin -> edit a team
+    │   │   ├── AdminedituserForm.php      &rarr;  Form logic for admin -> edit a user
+    │   │   ├── AdminsettingsForm.php      &rarr;  Form logic for admin -> change settings
+    │   │   ├── BreakdownForm.php          &rarr;  Form logic for screenplay -> breakdown
+    │   │   ├── CeltxImport.php            &rarr;  logic for import celtic file
+    │   │   ├── Comment.php                &rarr;  logic for comments
+    │   │   ├── ContactForm.php            &rarr;  Form logic for site -> contactpage
+    │   │   ├── DbConfigForm.php           &rarr;  Form logic for installer -> db config
+    │   │   ├── EditprofileForm.php        &rarr;  Form logic for user -> edit profile
+    │   │   ├── EditteamForm.php           &rarr;  Form logic for team -> edit
+    │   │   ├── ExportForm.php             &rarr;  Form logic for screenplay -> export
+    │   │   ├── ExportPhpWord.php          &rarr;  logic for export with library phpword (odt,docx,rtf)
+    │   │   ├── HistoryForm.php            &rarr;  Form logic for screenplay -> history
+    │   │   ├── ImportForm.php             &rarr;  Form logic for team -> import
+    │   │   ├── MailConfigForm.php         &rarr;  Form logic for installer -> MailConfig
+    │   │   ├── Installer.php              &rarr;  logic for installer
+    │   │   ├── InvitecollaboratorForm.php &rarr;  Form logic for team -> invite collaborator(artist)
+    │   │   ├── InviteobserverForm.php     &rarr;  Form logic for team -> invite observer
+    │   │   ├── KickuserForm.php           &rarr;  Form logic for team -> kick user
+    │   │   ├── LoginForm.php              &rarr;  Form logic for site -> login
+    │   │   ├── RegisterForm.php           &rarr;  Form logic for site -> register
+    │   │   ├── RegisterinpublicForm.php   &rarr;  Form logic for team -> registerinpublic
+    │   │   ├── ScreenplaydeleteForm.php   &rarr;  Form logic for screenplay -> delete
+    │   │   ├── Screenplay.php             &rarr;  logic for screenplays (and breakdownforms)
+    │   │   ├── Setting.php                &rarr;  logic for one setting (has key, value, type; for example [pagetitle,SAWP,3],[emailActivation,true,1])
+    │   │   ├── TeamdeleteForm.php         &rarr;  Form logic for team -> delete
+    │   │   ├── TeamleaveForm.php          &rarr;  Form logic for team -> leave
+    │   │   ├── Team.php                   &rarr;  logic for team
+    │   │   ├── TrelbyImport.php           &rarr;  logic for import trelby file
+    │   │   ├── UserdeleteForm.php         &rarr;  Form logic for admin -> userdelete
+    │   │   ├── User.php                   &rarr;  logic for user
+    │   │   └── UserRightForm.php          &rarr;  Form logic for team -> change right/role of user
+    │   ├── rbac
+    │   │   ├── ArtistOrBetterRule.php     &rarr;  true if user is artist or director in this team
+    │   │   ├── ArtistRule.php             &rarr;  true if user is artist in this team
+    │   │   ├── DirectorRule.php           &rarr;  true if user is director in this team
+    │   │   ├── ObserverOrBetterRule.php   &rarr;  true if user is collaborator/member in this team (observer,artist or director)
+    │   │   └── ObserverRule.php           &rarr;  true if user is observer in this team
+    │   ├── sawp.sql                       &rarr;  database. Will be importet during installation.
+    │   ├── README.md                      &rarr;  Readme for yii2
+    │   ├── LICENSE.md                     &rarr;  License for yii2
+    │   └── views
+    │       ├── ajax
+    │       │   ├── get.php                &rarr;  does a simple echo
+    │       │   └── save.php               &rarr;  echo with json_encode
+    │       ├── layouts
+    │       │   ├── install.php            &rarr;  Layout for installation
+    │       │   ├── main.php               &rarr;  Normal site layout
+    │       │   ├── none.php               &rarr;  no layout (only echo)
+    │       │   └── screenplay.php         &rarr;  layout for screenplayeditor
+    │       ├── site
+    │       │   └── error.php              &rarr;  Viewed on error
+    │       └── testing
+    │           └── output.php             &rarr;  used for testing. only echo
+    ├── index.php                          &rarr;  Main php file. Call it to use the application.
+    ├── index-test.php                     &rarr;  only used for testing, not shipped in this location <span style="color:red;text-transform: uppercase; font-weight: bold;">do not leave this file here in productive environment, it causes security issues!</span>
+    ├── js
+    │   ├── breakdownreport.js             &rarr;  script code for screenplay -> breakdownreport
+    │   ├── export.js                      &rarr;  script code for screenplay -> export
+    │   ├── history.js                     &rarr;  script code for screenplay -> history
+    │   ├── jquery.i18n-dict.js.php        &rarr;  script code for translation. The php code generates a js file with all strings from <b>includes/messages/$lang/js.php</b>.
+    │   ├── jquery.i18n-wrapper.js         &rarr;  wrapper for jquery.i18n. we need a wrapper because: 1.Instead of empty strings use strings from code. 2.jst function needs two parameter for our script that exports strings to messages folder
+    │   ├── screenplay
+    │   │   ├── CommonFunctions.js         &rarr;  Common javascript dunctions
+    │   │   ├── Layout.js                  &rarr;  Used for Layout, hide tagtree, show comments
+    │   │   ├── main.js                    &rarr;  Main Screenplay javascript file, initialize, and keepLock
+    │   │   ├── ScriptEditor.js            &rarr;  editor, tagging stuff
+    │   │   ├── TagTree.js                 &rarr;  tagtree, edit tag popover, 
+    │   └── showPageInModal.js             &rarr;  show a page in a modal.
+    ├── media
+    │   ├── help1.png                      &rarr;  picture for editor help
+    │   ├── help2.png                      &rarr;  picture for tagtree help
+    │   └── spinner.gif                    &rarr;  spinner loading animation
+    └── robots.txt                         &rarr;  Config file for webcrawler/robots from internet search engines
+
+
+</pre>
+</div>
+
+</body>

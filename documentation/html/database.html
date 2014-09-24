@@ -1,0 +1,191 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>SAWP Documentation - Database</title>
+</head>
+<body>
+
+
+
+<h1>Database</h1>
+
+We use InnoDB with foreign key constraints. All foreign keys are colored lines(not the black one) in this model:
+
+<img style="border: 2px solid black;" src="../images/er.png"><br />
+
+
+<h4>auth_assignment</h4>
+Yii2 table. Global rights assignment for users
+<ul>
+    <li>item_name: role for user. Can be admin or user. The adminright includes all userrights</li>
+    <li>user_id: id of user, is not a innodb foreignkey, because there is an entry, before the first user is created.</li>
+    <li>created_at: linux timestamp when right was assigned</li>
+</ul><br />
+
+
+
+
+<h4>auth_item</h4>
+Yii2 table. All single rights, that belong either to admin or to user.
+<ul>
+    <li>name: name of the right</li>
+    <li>type: 1=global right, 2=single right</li>
+    <li>description: Description of the right</li>
+    <li>rule_name: if not null the right is only availiable if the class named in rule evaluate to true</li>
+    <li>data: <i>Not sure, check yii2 documantation. Is always null</i></li>
+    <li>created_at: Time when item was created</li>
+    <li>updated_at: Time when item was updated</li>
+</ul><br />
+
+
+
+
+<h4>auth_item_child</h4>
+Yii2 table. Assign single rights to Global rights and User to admin.
+<ul>
+    <li>parent: name of parent right (admin/user)</li>
+    <li>child: name of child/single right</li>
+</ul><br />
+
+
+
+
+<h4>auth_rule</h4>
+Yii2 table. Rules that give rights dynamically. Used for userroles in teams.
+<ul>
+    <li>name: name of rule</li>
+    <li>data: data of rule. Contains Classname.</li>
+    <li>created_at: Rule was created at this date.</li>
+    <li>updated_at: Rule was updated at this date.</li>
+</ul><br />
+
+
+
+
+<h4>screenplay</h4>
+Table for all screenplays.
+<ul>
+    <li>id: id of screenplay</li>
+    <li>name: name of screenplay</li>
+    <li>teamid: teamid the screenplay belongs to</li>
+    <li>creationtime: Time the screenplay was created</li>
+    <li>locktime: Time the screenplay was last locked (edited by a user, javascript send keepLock)</li>
+    <li>lockuser: Locked by this userid</li>
+    <li>deleted: 1 if deleted</li>
+</ul><br />
+
+
+
+
+<h4>screenplay_comment</h4>
+Table for comments.
+<ul>
+    <li>id: id of comment. If it is the first comment in the Thread, it is the id written in the anchor (<a name=""> inside screenplay text)</li>
+    <li>screenplayId: screenplayid the comment belongs to</li>
+    <li>nextId: null if it the last comment in thread, or the id of the following comment</li>
+    <li>userId: id of the author of the comment</li>
+    <li>creationtime: Time when comment was written</li>
+    <li>text: Textcontent of comment</li>
+</ul><br />
+
+
+
+
+<h4>screenplay_revision</h4>
+Table for screenplay revisions. A revision includes a tree and a text revision.
+<ul>
+    <li>id: id of the revision</li>
+    <li>screenplayId: screenplayid the revision belongs to</li>
+    <li>creation_time: Time when revision was saved</li>
+    <li>textId: id of text revision</li>
+    <li>treeId: id of tree revision</li>
+</ul><br />
+
+
+
+
+<h4>screenplay_text_revision</h4>
+Table for screenplay text revisions.
+<ul>
+    <li>id: id of the text revision</li>
+    <li>text: screenplay content of this text revision (html)</li>
+</ul><br />
+
+
+
+
+<h4>screenplay_tree_revision</h4>
+Table for screenplay tree revisions.
+<ul>
+    <li>id: id of the tree revision</li>
+    <li>content: screenplay tree of this tree revision (json string)</li>
+</ul><br />
+
+
+
+
+<h4>setting</h4>
+Table for global site settings.
+<ul>
+    <li>key: name of this setting (for example <b>pagetitle</b>)</li>
+    <li>value: Value of this setting (for example <b>My first page</b>)</li>
+    <li>type: Type of this setting (1=boolean, 2=integer, 3=string)</li>
+</ul><br />
+
+
+
+
+<h4>team</h4>
+Table for teams. A team is a group of users that work on the same screenplays. Every user has a specific role (see team_user)
+<ul>
+    <li>id: id of the team</li>
+    <li>name: name of the team</li>
+    <li>description: description of the team</li>
+    <li>creationtime: time when team was created</li>
+    <li>public: 1 if team is public</li>
+    <li>defaultCategories: default Categories for new created screenplays. (json string)</li>
+    <li>deleted: 1 if team is deleted</li>
+</ul><br />
+
+
+
+
+<h4>team_user</h4>
+Assignment team to user.
+<ul>
+    <li>teamid: id of the team</li>
+    <li>userid: id of the user</li>
+    <li>rights: role of the user (0=director, 1=artist, 2=observer)</li>
+</ul><br />
+
+
+
+
+<h4>user</h4>
+Table for users.
+<ul>
+    <li>id: id of the user</li>
+    <li>username: name of the user</li>
+    <li>passwordHash: hash of the password</li>
+    <li>mailAddress: mailaddress of the user</li>
+    <li>authKey: <i>Not sure, check yii2 documantation.</i></li>
+    <li>accessToken: <i>Not sure, check yii2 documantation.</i></li>
+    <li>createdat: Time when user was created</li>
+    <li>status: status of the user (0=new/not activated, 1=active/mail verified, 2=banned, 3=deleted)</li>
+    <li>gravatarMailAddress: Mailadress for gravatar icon. If null the normal mailaddress will be used</li>
+    <li>lastActive: Time when user was last online</li>
+</ul><br />
+
+
+
+
+<h4>user_mail_token</h4>
+Tokens send in activation mails.
+<ul>
+    <li>token: token send via mail</li>
+    <li>userid: id of the user</li>
+    <li>creationtime: time when token was created (user registered)</li>
+</ul><br />
+
+
+</body>

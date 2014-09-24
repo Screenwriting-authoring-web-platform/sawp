@@ -1,0 +1,120 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>SAWP Documentation - Format</title>
+</head>
+<body>
+
+
+
+<h2>Charset</h2>
+Charset in Database, Tagtree and Screenplaytext is always UTF8.
+
+
+
+<h2>Screenplay Format</h2>
+
+
+The screenplay is a html string, containing only the inside of the <b>&lt;body&gt;</b> part.<br />
+
+<h3>Blocks</h3>
+In the first hierarchy level there are only <b>&lt;p&gt;</b> that represent a block. The class defines what block it is.<br />
+For example <b>&lt;p class="scene"&gt;ext. Forest&lt;/p&gt;</b><br />
+Possible classes are:
+<ul>
+    <li>scene</li>
+    <li>transition</li>
+    <li>shot</li>
+    <li>action</li>
+    <li>parenthetical</li>
+    <li>character</li>
+    <li>dialogue</li>
+    <li>note</li>
+</ul><br />
+
+<h3>Tags</h3>
+Tagging a word or multiple words will surround the selected text with a <b>&lt;span&gt;</b> element.<br />
+For example: <b>&lt;span class="categoryoGEvZSxRXHQK"&gt;cidade&lt;/span&gt;</b><br />
+
+<h3>Comment anchors</h3>
+Creating a Commentthread will insert a commenticon at the right position inside the text.<br />
+For example: <b>&lt;a name="1" /&gt;</b>
+
+
+
+<h2>Tagtree Format</h2>
+<img src="../images/tagtree.png"><br />
+<i>comments are not allowed in json strings, but we will add them with // here</i><br />
+<pre>
+{                                       //root node, not visible
+  "expanded": true,
+  "key": "root_1",
+  "title": "root",
+  "children": [
+    {                                   //first visible node. Has the same name like the screenplay. cannot be edited. You cannot create siblings.
+      "expanded": true,
+      "folder": true,
+      "key": "_1",
+      "selected": false,
+      "title": "System Error (1.1)",
+      "children": [
+        {                               //An example category named "set". Has color "#f83a22" and categorykey "1"
+          "expanded": true,
+          "folder": true,
+          "key": "1",
+          "selected": false,
+          "title": "set",
+          "tooltip": "click the edit button to edit the categories",
+          "data": {
+            "color": "#f83a22"
+          },
+          "children": [
+            {
+              "folder": false,          //An example tag named "cidade". Has color "#f83a22" and tagkey "oGEvZSxRXHQK"
+              "key": "oGEvZSxRXHQK",
+              "selected": false,
+              "title": "cidade",
+              "data": {
+                "color": "#f83a22"
+              }
+            }
+          ]
+        },
+        {
+          "expanded": true,
+          "folder": true,
+          "key": "2",
+          "selected": false,
+          "title": "vehicles",
+          "tooltip": "click the edit button to edit the categories",
+          "data": {
+            "color": "#fa573c"
+          },
+          "children": [
+            {
+              "folder": false,
+              "key": "feLhi3H7Q3jt",
+              "selected": false,
+              "title": "carros",
+              "data": {
+                "color": "#fa573c"
+              }
+            },
+            {
+              "folder": false,
+              "key": "CWy5MYGx1ur3",
+              "selected": false,
+              "title": "Zeppelin",
+              "data": {
+                "color": "#fa573c"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</pre>
+
+</body>
