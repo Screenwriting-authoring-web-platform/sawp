@@ -19,16 +19,17 @@
         upload everything that is inside the folder /web inside your folder on the webspace where you want the project to be located (most time the root folder /), so when you call http://example.com/index.php the application shows up.
     </li>
     <li>
-        make sure that *.php files are executed with php (on most webhosters that is already configured) we tested the application with PHP 5.5.9 (built: Sep  4 2014 06:56:34) on Ubuntu 14.04.1 LTS
+        make sure that *.php files are executed with php (on most webhosters that is already configured). <span style="color:red;">Yii 2.0 requires PHP 5.4+.</span><br />
+        <i>We tested the application with PHP 5.5.9 (built: Sep  4 2014 06:56:34) on Ubuntu 14.04.1 LTS</i>
     </li>
     <li>
-        for better sart url (without entering index.php) make sure index.php is your default file to open (on most webhosters that is already configured)
+        for better start url (without entering index.php) make sure index.php is your default file to open (on most webhosters that is already configured)
     </li>
     <li>
-        on your webhoster create a new MySQL database(if you can with innodb) (or share a database with another tool, but thats not recommended) and write down hostname (server address), username, password, and databasename. We used MySQL 5.5.38 on Ubuntu 14.04.1 LTS
+        on your webhoster create a new MySQL database(if you can with innodb) (or share a database with another tool, but thats not recommended) and write down hostname (server address), username, password, and databasename. <i>We used MySQL 5.5.38 on Ubuntu 14.04.1 LTS</i>
     </li>
     <li>
-        open http://example.com in a browser (we tested Firefox 32.0 on Ubuntu 14.04.1 LTS) and press start
+        open http://example.com in a browser and press start <i>(we tested Firefox 32.0 on Ubuntu 14.04.1 LTS)</i>
     </li>
     <li>
         you can see what php modules are needed for the tool and what files and folders have to be writeable. If a php module is not active(red) install it. If a permission is not writable(red) make sure the php user can write it. If everything is green you can press Next Step.
