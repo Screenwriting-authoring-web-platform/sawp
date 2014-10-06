@@ -1,0 +1,112 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>SAWP Documentation - Export Database</title>
+</head>
+<body>
+
+
+
+<h1>Export Database</h1>
+
+
+<p>This document explains how to export the SAWP database from phpMyAdmin so that 
+it can be published and checked in.</p>
+
+<p>
+when shipping the project, make sure that the content of <b>/web/includes/config/installed.php</b> is <b>&lt;?php return false;</b><br />
+also <b>/web/index-test.php</b> has to be moved to <b>/tests/</b><br />
+and <b>/web/includes/controllers/TestingController.php</b> has to be moved to <b>/tests/</b><br />
+</p>
+
+<h3>Export from phpMyAdmin (Version 5.6.16)</h3>
+
+<ol>
+	<li><h4>Cleaning the database</h4>
+                
+        <span style="text-transform: uppercase; font-weight: bold;">The following steps can be performed automated with the given sql at the end of this document</span>
+        <ol type="a">
+            <li>Clear all entrys in the tables:
+                <ul>
+                    <li>auth_assignment</li>
+                    <li>team</li>
+                    <li>team_user</li>
+                    <li>screenplay</li>
+                    <li>screenplay_comment</li>
+                    <li>screenplay_revision</li>
+                    <li>screenplay_text_revision</li>
+                    <li>screenplay_tree_revision</li>
+                    <li>user</li>
+                    <li>user_mail_token</li>
+                </ul>
+            </li>
+            <li>Add a tuple <b>('admin', 1, NULL)</b> to <b>auth_assignment</b>. This
+                     will become the first administrator account later. To be
+                     able to insert this tuple you must disable foreign key
+                     checking as the user will be created later.
+            </li>
+            <li>Reset the autoincrement values to 1 for tables (see Operations)
+                        team
+                        screenplay
+                        screenplay_comment
+                        screenplay_revision
+                        screenplay_text_revision
+                        screenplay_tree_revision
+                        user
+            </li>
+    </ol>
+	<li><h4>Exporting the database</h4>
+        <ol type="a">
+            <li>Select the database and select the Export tab</li>
+            <li>Select the option "<i>Custom - display all possible options</i>"
+                     and make the following configurations (leave the defaults
+                     for all other options)<br /><br />
+
+			<b>Format-specific options:</b><br />
+				ENABLE "Disable foreign key checks"<br /><br />
+			<b>Object creation options:</b><br />
+				ENABLE "Add DROP TABLE / VIEW / PROCEDURE / FUNCTION / EVENT statement"<br /><br />
+            </li>
+            <li>
+                Click "GO" and store the export as "sawp.sql" in web/includes/sawp.sql
+            </li>
+        </ol>
+    </li>
+</ol>
+
+
+<h3>SQL CODE for step 1</h3>
+<div style="border: 1px dotted black">
+
+<br />
+SET foreign_key_checks = 0;<br />
+<br />
+/* STEP 1.a) */<br />
+TRUNCATE `auth_assignment`;<br />
+TRUNCATE `team`;<br />
+TRUNCATE `team_user`;<br />
+TRUNCATE `screenplay`;<br />
+TRUNCATE `screenplay_comment`;<br />
+TRUNCATE `screenplay_revision`;<br />
+TRUNCATE `screenplay_text_revision`;<br />
+TRUNCATE `screenplay_tree_revision`;<br />
+TRUNCATE `user`;<br />
+TRUNCATE `user_mail_token`;<br />
+<br />
+/* STEP 1.b) */<br />
+INSERT INTO `sawp`.`auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES ('admin', '1', NULL);<br />
+<br />
+/* STEP 1.c) */<br />
+ALTER TABLE team AUTO_INCREMENT = 1;<br />
+ALTER TABLE screenplay AUTO_INCREMENT = 1;<br />
+ALTER TABLE screenplay_comment AUTO_INCREMENT = 1;<br />
+ALTER TABLE screenplay_revision AUTO_INCREMENT = 1;<br />
+ALTER TABLE screenplay_text_revision AUTO_INCREMENT = 1;<br />
+ALTER TABLE screenplay_tree_revision AUTO_INCREMENT = 1;<br />
+ALTER TABLE user AUTO_INCREMENT = 1;<br />
+<br />
+SET foreign_key_checks = 1;<br />
+</div>
+
+
+</body>
