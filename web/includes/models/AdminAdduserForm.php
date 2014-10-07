@@ -77,7 +77,7 @@ class AdminAdduserForm extends Model
     public function add()
     {
         if ($this->validate()) {
-            $role = ($isadmin) ? 'admin' : 'user';
+            $role = ($this->isadmin) ? 'admin' : 'user';
             return User::newuser($this->username,$this->email,$this->password, $role,true);
         } else {
             return false;
