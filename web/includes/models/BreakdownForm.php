@@ -24,7 +24,8 @@ class BreakdownForm extends Model
         return [
             // name is required
             [['screenplayid','type'], 'required'],
-            [['scenes','graphic','categories'], 'myValidation']
+            [['scenes','graphic','categories'], 'myValidation'],
+            [['type'], 'myAtLeastOne']
         ];
     }
     
@@ -32,6 +33,13 @@ class BreakdownForm extends Model
         
     }
 
+    public function myAtLeastOne() {
+        if($this->type==="1" || $this->type==="2") {
+            if(!is_array($this->scenes) || count($this->scenes)===0) $this->addError('scenes', \Yii::t('app', "select at least one"));
+            if(!is_array($this->categories) || count($this->categories)===0) $this->addError('categories', \Yii::t('app', "select at least one"));
+        }
+    }
+    
     /**
      * Registers a user using the provided username, password and emailadress.
      * @return boolean whether the user is registered successfully
