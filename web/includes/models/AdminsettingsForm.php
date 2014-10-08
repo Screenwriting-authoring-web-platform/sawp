@@ -25,6 +25,7 @@ class AdminsettingsForm extends Model
     public $mailusername;
     public $mailpassword;
     public $mailencryption;
+    public $mailusesmtp;
     
     /**
      * @return array the validation rules.
@@ -35,11 +36,10 @@ class AdminsettingsForm extends Model
             // name is required
             [['pageTitle','pagehomeurl','emailActivation','activationMailBody',
             'activationMailSubject','activationMailSender','frontPage',
-            'defaultCategories','contactmail',
-            'mailhost','mailport','mailusername','mailpassword'], 'required'],
-            [['language','mailencryption'], 'dummy'],
+            'defaultCategories','contactmail'], 'required'],
+            [['language','mailencryption','mailhost','mailport','mailusername','mailpassword'], 'dummy'],
             [['mailport'],'numeric'],
-
+            [['mailusesmtp'], 'validateMyrequired']
         ];
     }
     
@@ -48,6 +48,14 @@ class AdminsettingsForm extends Model
     public function numeric() {
         if(!ctype_digit($this->mailport))
         $this->addError('mailport', \Yii::t('app', 'only digits allowed!'));
+    }
+    
+    public function validateMyrequired() {
+        if($this->mailusesmtp==="0") return;
+        if($this->mailhost=="") $this->addError('mailhost', "required");
+        if($this->mailport=="") $this->addError('mailport', "required");
+        if($this->mailusername=="") $this->addError('mailusername', "required");
+        if($this->mailpassword=="") $this->addError('mailpassword', "required");
     }
     
     public function __construct() {
@@ -62,12 +70,15 @@ class AdminsettingsForm extends Model
         $this->contactmail=Setting::findSetting("contactmail")->getValue();
         $this->language = \Yii::$app->language;
         
+        if(\Yii::$app->mail===null) return;
+        if(\Yii::$app->mail->transport===null) return;
+        $this->mailusesmtp = (\Yii::$app->mail->transport instanceof \Swift_SmtpTransport);
+        if(\Yii::$app->mail->transport instanceof \Swift_MailTransport) return;
         $this->mailhost = \Yii::$app->mail->transport->getHost();
         $this->mailport = \Yii::$app->mail->transport->getPort();
         $this->mailusername = \Yii::$app->mail->transport->getUsername();
         $this->mailpassword = \Yii::$app->mail->transport->getPassword();
         $this->mailencryption = \Yii::$app->mail->transport->getEncryption();
-
     }
 
     /**
@@ -92,7 +103,10 @@ class AdminsettingsForm extends Model
             if(!$byteswritten) throw new ErrorException(\Yii::t('app', 'no Bytes written'));
             
             $installer = new Installer();
-            $installer->setMailConfig("Swift_SmtpTransport", $this->mailhost, $this->mailusername, $this->mailpassword, $this->mailport, $this->mailencryption);
+            if($this->mailusesmtp)
+                $installer->setMailConfig("Swift_SmtpTransport", $this->mailhost, $this->mailusername, $this->mailpassword, $this->mailport, $this->mailencryption);
+            else
+                $installer->setMailConfig(null);
                 
             return true;
         } else {

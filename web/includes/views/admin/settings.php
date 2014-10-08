@@ -54,6 +54,7 @@ $encryption = ["tls"=>"tls","ssl"=>"ssl",""=>"(none)",];
     
     <hr />
     
+    <?= $form->field($model, 'mailusesmtp')->checkbox([], false)->label(\Yii::t('app', 'use SMTP')) ?> 
     <?= $form->field($model, 'mailhost')->label(\Yii::t('app', 'Mailhost')) ?>
     <?= $form->field($model, 'mailport')->label(\Yii::t('app', 'port')) ?>
     <?= $form->field($model, 'mailusername')->label(\Yii::t('app', 'username')) ?>
