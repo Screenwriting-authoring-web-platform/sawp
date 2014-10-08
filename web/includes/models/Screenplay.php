@@ -573,7 +573,7 @@ class Screenplay extends ActiveRecord
             }
             return false;
         }
-
+        
         $sp = Screenplay::findScreenplay($screenplayId);
         $allCategories = $sp->getCategories();
         $tags = $sp->getTagsFromCategories($categories);
@@ -603,7 +603,7 @@ class Screenplay extends ActiveRecord
                 continue;
             }
             
-            if($currentScene == null) continue;
+            if($currentScene === null) continue;    //important: use === instead of == because 0 == null is true
             foreach ($p->span as $span) {
                 $spanclass = ($span['class']==NULL) ? "" : ((string) $span['class']);
                 $spantext = ($span==NULL) ? "" : (string) static::strip_only_tags(static::getTextFromXML($span->asXML()));
@@ -660,7 +660,7 @@ class Screenplay extends ActiveRecord
                 continue;
             }
             
-            if($currentScene == null) continue;
+            if($currentScene === null) continue;
             foreach ($p->span as $span) {
                 $spanclass = ($span['class']==NULL) ? "" : ((string) $span['class']);
                 $spantext = ($span==NULL) ? "" : (string) static::strip_only_tags(static::getTextFromXML($span->asXML()));
